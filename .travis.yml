@@ -13,3 +13,9 @@ after_success:
   - docker build -t gomurali/multi-nginx ./nginx
   - docker build -t gomurali/multi-server ./server
   - docker build -t gomurali/multi-worker ./worker
+  #login to docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push gomurali/multi-client
+  - docker push gomurali/multi-nginx
+  - docker push gomurali/multi-server
+  - docker push gomurali/multi-worker
